@@ -1,5 +1,6 @@
 package entites;
 
+// caso eu coloque abstract antes de Account eu não permito que pessoas possam istanciar a classe (Segurança) 
 public class Account {
 
 	private Integer number;

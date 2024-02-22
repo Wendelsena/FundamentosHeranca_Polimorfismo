@@ -1,5 +1,8 @@
 package application;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import entites.Account;
 import entites.BusinessAccount;
 import entites.SavingsAccount;
@@ -59,6 +62,38 @@ public class Program {
 		System.out.println(y.getBalance());
 		
 		
+		// classe abstrata
+		
+		// explicação no topo da classe Account <<<<<<<
+		Account acc8 = new Account(1001, "Wendel", 1000.0);
+		Account acc9 = new SavingsAccount(1002, "Alefe", 1000.0, 0.01);
+		Account acc10 = new BusinessAccount(1003, "Julia", 1000.0, 500.0);
+		
+		System.out.println();
+		// podemos adicionar istancias diferentes dado que Account é uma classe generica 
+		List<Account> list = new ArrayList<>();
+	
+		list.add(new SavingsAccount(1004, "Sheila", 500.0, 0.01));
+		list.add(new SavingsAccount(1005, "Julia", 1000.0, 0.01));
+		list.add(new BusinessAccount(1006, "Kelly", 300.0, 400.00));
+		list.add(new BusinessAccount(1007, "Lilian", 500.0, 500.00));
+		
+		double sum = 0;
+		
+		for(Account Acc : list) {
+			sum += Acc.getBalance(); // independente do tipo de conta a soma aparecera
+		}
+		
+		System.out.println("Total balance: " + sum);
+		
+		for(Account Acc : list) {
+			Acc.deposit(10.0);; // independente do tipo de conta o deposito ocorrera
+		}
+		
+		 // para exibir todas as contas
+		for(Account Acc : list) {
+			System.out.printf("Updated balance for account %d: $%.2f%n", Acc.getNumber(), Acc.getBalance()); 
+		}
 	}
 
 }
